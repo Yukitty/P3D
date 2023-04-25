@@ -1369,7 +1369,7 @@
 
             Dim reg() As String = Core.Player.RegisterData.Split(CChar(","))
 
-            Dim contactData() As String = System.IO.File.ReadAllLines(GameController.GamePath & "\Content\Data\Scripts\phone\contacts.dat")
+            Dim contactData() As String = System.IO.File.ReadAllLines(GameModeManager.GetContentFilePath("Data\contacts.dat"))
 
             For Each r As String In reg
                 If r.StartsWith("phone_contact_") = True Then
@@ -1401,8 +1401,10 @@
         Public Shared Sub CallID(ByVal ID As String, ByVal checkRegistered As Boolean, ByVal checkLocation As Boolean)
             Dim reg() As String = Core.Player.RegisterData.Split(CChar(","))
 
-            Security.FileValidation.CheckFileValid(GameController.GamePath & "\Content\Data\Scripts\phone\contacts.dat", False, "PokegearScreen.vb")
-            Dim contactData() As String = System.IO.File.ReadAllLines(GameController.GamePath & "\Content\Data\Scripts\phone\contacts.dat")
+            Dim file As String = GameModeManager.GetContentFilePath("Data\contacts.dat")
+            Security.FileValidation.CheckFileValid(file, False, "PokegearScreen.vb")
+
+            Dim contactData() As String = System.IO.File.ReadAllLines(file)
 
             Dim tempContacs As New List(Of Contact)
 
@@ -1454,8 +1456,10 @@
 
             Dim reg() As String = Core.Player.RegisterData.Split(CChar(","))
 
-            Security.FileValidation.CheckFileValid(GameController.GamePath & "\Content\Data\Scripts\phone\contacts.dat", False, "PokegearScreen.vb")
-            Dim contactData() As String = System.IO.File.ReadAllLines(GameController.GamePath & "\Content\Data\Scripts\phone\contacts.dat")
+            Dim file As String = GameModeManager.GetContentFilePath("Data\contacts.dat")
+            Security.FileValidation.CheckFileValid(file, False, "PokegearScreen.vb")
+
+            Dim contactData() As String = System.IO.File.ReadAllLines(file)
 
             Dim tempContacs As New List(Of Contact)
 
